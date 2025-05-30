@@ -3,6 +3,8 @@ from langchain_community.graphs import Neo4jGraph
 from langchain_community.chains.graph_qa.cypher import GraphCypherQAChain
 from langchain_community.chat_models import ChatOllama
 from langchain.prompts import PromptTemplate
+from dotenv import load_dotenv
+load_dotenv(override=True)  # Loads variables from .env into os.environ
 
 graph = Neo4jGraph(
     url=os.getenv("NEO4J_URI"),
@@ -81,7 +83,7 @@ String category values:
 Test results are one of: 'Inconclusive', 'Normal', 'Abnormal'
 Visit statuses are one of: 'OPEN', 'DISCHARGED'
 Admission Types are one of: 'Elective', 'Emergency', 'Urgent'
-Payer names are one of: 'Cigna', 'Blue Cross', 'UnitedHealthcare', 'Medicare',
+Payer names are one of: 'Cigna', 'Blue Cross', 'UnitedHealthcare', 'Medicaid',
 'Aetna'
 
 A visit is considered open if its status is 'OPEN' and the discharge date is
@@ -160,4 +162,5 @@ hospital_cypher_chain = GraphCypherQAChain.from_llm(
     verbose = True,
     validate_cypher = True,
     top_k = 100,
+    allow_dangerous_requests=True,
 )

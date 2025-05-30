@@ -1,1 +1,19 @@
-# To ensure app dependencies are ported from your virtual environment/host machine into your container, run 'pip freeze > requirements.txt' in the terminal to overwrite this file
+# Tensure app dependencies are ported from your virtual environment/host machine into your container, run 'pip freeze > requirements.txt' in the terminal to overwrite this file
+neo4j==5.14.1
+retry==0.9.2
+python-dotenv
+asyncio==3.4.3
+fastapi==0.109.0
+langchain
+langchain-community
+langchain-core
+sentence_transformers
+langchainhub==0.1.14
+numpy==1.23.5
+openai==1.7.2
+opentelemetry-api==1.22.0
+pydantic==1.10.5
+urllib3<2.0
+uvicorn==0.25.0
+requests==2.31.0
+streamlit==1.29.0

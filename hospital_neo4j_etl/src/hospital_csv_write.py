@@ -1,10 +1,13 @@
 
 import logging
 import os
+from dotenv import load_dotenv
+
 
 from neo4j import GraphDatabase
 from retry import retry
 
+load_dotenv(override=True)  # Loads variables from .env into os.environ
 HOSPITALS_CSV_PATH = os.getenv("HOSPITALS_CSV_PATH")
 PAYERS_CSV_PATH = os.getenv("PAYERS_CSV_PATH")
 PHYSICIANS_CSV_PATH = os.getenv("PHYSICIANS_CSV_PATH")
